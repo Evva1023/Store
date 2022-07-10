@@ -45,7 +45,7 @@ export class ProductController {
     }
 
     @Get("/:id")
-    @Render("products/show")
+    @Render("products/singleProduct")
     show(@Param() params) {
         const product = this.products[params.id - 1];
         const viewData = [];
