@@ -18,7 +18,7 @@ import { AdminModule } from './admin/admin.module';
       password: "",
       database: "store",
       entities: ["dist/**/*.entity{.ts,.js}"],
-      bigNumberStrings: true,
+      bigNumberStrings: false,
       logging: true,
       synchronize: true
     }),
