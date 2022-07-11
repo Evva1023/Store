@@ -1,44 +1,16 @@
-import { Controller, Get, Render, Param } from "@nestjs/common";
+import { Controller, Get, Render, Param, Res } from "@nestjs/common";
+import { ProductService } from "./product.service";
 
 @Controller("/product")
 export class ProductController {
-    products = [
-        {
-            id: "1",
-            name: "Strawberries",
-            description: "Very sweet and organically grown",
-            image: "one.jpg",
-            price: "10.00"
-        },
-        {
-            id: "2",
-            name: "Blueberries",
-            description: "Very sweet and organically grown",
-            image: "two.jpg",
-            price: "19.00"
-        },
-        {
-            id: "3",
-            name: "Raspberries",
-            description: "Very sweet and organically grown",
-            image: "three.jpg",
-            price: "15.00"
-        },
-        {
-            id: "4",
-            name: "Pineapples",
-            description: "Very sweet and organically grown",
-            image: "four.jpg",
-            price: "10.00"
-        },
-    ]; 
+    constructor(private readonly productService: ProductService) {}
 
     @Get("/")
     @Render("products/index")
-    index() {
+    async index() {
         const viewData = [];
         viewData["title"] = "Our Products";
-        viewData["products"] = this.products;
+        viewData["products"] = await this.productService.findAll();
         return {
             viewData: viewData,
         };
@@ -46,12 +18,15 @@ export class ProductController {
 
     @Get("/:id")
     @Render("products/singleProduct")
-    show(@Param() params) {
-        const product = this.products[params.id - 1];
+    async getOne(@Param("id") id) {
+        const product = await this.productService.findOne(id);
+        
         const viewData = [];
         viewData["title"] = product.name;
         viewData["subtitle"] = product.description;
         viewData["product"] = product;
+        viewData["image"] = product.image;
+        viewData["price"] = product.price;
         return {
             viewData: viewData,
         };

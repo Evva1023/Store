@@ -20,7 +20,6 @@ export class AppController {
   about() {
     const viewData = [];
     viewData["description"] = "This is our about page";
-    viewData["author"] = "Developed by Evvoosha";
     viewData["title"] = "We Care - We Deliver Fast And Fresh";
     return {
       viewData: viewData

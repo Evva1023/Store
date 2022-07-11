@@ -1,9 +1,13 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { ProductController } from './product.controller';
+import { Module, Global } from '@nestjs/common';
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ProductController } from './product.controller';
+import { ProductService } from './product.service';
+import { Product } from './entities/product.entity';
+import { AdminModule } from './admin/admin.module';
 
+@Global()
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -13,13 +17,16 @@ import { AppService } from './app.service';
       username: "root",
       password: "",
       database: "store",
-      entities: ["dist/**/**.entity{.ts,.js}"],
+      entities: ["dist/**/*.entity{.ts,.js}"],
       bigNumberStrings: true,
       logging: true,
       synchronize: true
     }),
+    TypeOrmModule.forFeature([Product]),
+    AdminModule,
   ],
   controllers: [AppController, ProductController],
-  providers: [AppService],
+  providers: [AppService, ProductService],
+  exports: [ProductService]
 })
 export class AppModule {}

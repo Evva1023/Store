@@ -8,6 +8,11 @@
 
 .copyright {
     background-color: #1a252f;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 10px 0;
 }
 
 .bg-primary {
@@ -16,11 +21,20 @@
 
 .img {
     height: 300px;
+    text-align: center;
     margin: auto;
     overflow: hidden;
 }
 
 .img-card {
-    height: 18vw;
+    height: 200px;
     object-fit: cover;
+}
+
+.img-card img, .img img {
+    width: 80%;
+}
+
+.row {
+    justify-content: center;
 }
