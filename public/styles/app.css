@@ -1,5 +1,5 @@
 .bg-secondary {
-    background-color:#2c3e50 !important;
+    background-color: #a31450 !important;
 }
 
 .navbar-dark {
@@ -15,8 +15,16 @@
     padding: 10px 0;
 }
 
+.cta {
+    color: #a31450 !important;
+}
+
+.text-small {
+    font-size: 0.7em;
+}
+
 .bg-primary {
-    background-color: #1a60bc !important;
+    background-color: #375a89 !important;
 }
 
 .img {
