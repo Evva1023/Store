@@ -31,6 +31,12 @@
     font-size: 0.7em;
 }
 
+.banner {
+    text-align: center;
+    height: 400px;
+    overflow: hidden;
+}
+
 .img {
     height: 300px;
     text-align: center;
